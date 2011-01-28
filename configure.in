@@ -1,0 +1,44 @@
+## configuration file
+
+AC_INIT([VQMC], 0.1)
+
+## set build directory
+BUILD_DIR=`pwd`
+AC_SUBST([BUILD_DIR], [$BUILD_DIR])
+## Source files
+AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile.common])
+AC_CONFIG_FILES([src/Configurations/Makefile])
+AC_CONFIG_FILES([src/Configurations/VMCconfig.cpp])
+AC_CONFIG_FILES([src/Configurations/VMCconfig.h])
+AC_CONFIG_FILES([src/Configurations/JastrowConfig.cpp])
+AC_CONFIG_FILES([src/Configurations/JastrowConfig.h])
+AC_CONFIG_FILES([src/Energy_Terms/Makefile])
+AC_CONFIG_FILES([src/Energy_Terms/localE.h])
+AC_CONFIG_FILES([src/Energy_Terms/localESqd.h])
+AC_CONFIG_FILES([src/Energy_Terms/SymHoLocalE.cpp])
+AC_CONFIG_FILES([src/Energy_Terms/SymHoLocalE.h])
+AC_CONFIG_FILES([src/Energy_Terms/SymHoLocalESqd.cpp])
+AC_CONFIG_FILES([src/Energy_Terms/SymHoLocalESqd.h])
+AC_CONFIG_FILES([src/Utilities/Makefile])
+AC_CONFIG_FILES([src/Utilities/rand.cpp])
+AC_CONFIG_FILES([src/Utilities/rand.h])
+AC_CONFIG_FILES([src/Utilities/VMCPoint.h])
+AC_CONFIG_FILES([src/Metropolis_Walker/Makefile])
+AC_CONFIG_FILES([src/Metropolis_Walker/VMCMetropolisWalker.cpp])
+AC_CONFIG_FILES([src/Metropolis_Walker/VMCMetropolisWalker.h])
+AC_CONFIG_FILES([src/system/main.cpp])
+AC_CONFIG_FILES([src/Wavefunctions/Makefile])
+AC_CONFIG_FILES([src/Wavefunctions/EffectiveRangeF.cpp])
+AC_CONFIG_FILES([src/Wavefunctions/EffectiveRangeF.h])
+AC_CONFIG_FILES([src/Wavefunctions/HardSphereF.cpp])
+AC_CONFIG_FILES([src/Wavefunctions/HardSphereF.h])
+AC_CONFIG_FILES([src/Wavefunctions/HomogeneousPhi.cpp])
+AC_CONFIG_FILES([src/Wavefunctions/HomogeneousPhi.h])
+AC_CONFIG_FILES([src/Wavefunctions/InteractionF.h])
+AC_CONFIG_FILES([src/Wavefunctions/Phi.h])
+AC_CONFIG_FILES([src/Wavefunctions/SymHoPhi.cpp])
+AC_CONFIG_FILES([src/Wavefunctions/SymHoPhi.h])
+
+
+AC_OUTPUT
