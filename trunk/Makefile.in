@@ -1,0 +1,46 @@
+VQMC_ROOT = @abs_top_srcdir@
+VQMC_BUILD_DIR = @BUILD_DIR@
+
+PREFIX = @prefix@
+
+# use this to have separate build and source directories
+VPATH = $(VQMC_BUILD_DIR)
+
+CPP_TARGETS = common
+
+TARGETS = $(CPP_TARGETS)
+
+
+COMMON_DIRS = src/Utilities
+COMMON_DIRS += src/Wavefunctions
+COMMON_DIRS += src/Energy_Terms
+COMMON_DIRS += src/Configurations
+COMMON_DIRS += src/Metropolis_Walker
+COMMON_DIRS += system
+
+
+
+.PHONY: all clean common doxygen c++
+
+all: $(TARGETS)
+        echo $(TARGETS)
+
+c++: $(CPP_TARGETS)
+
+clean:
+        for dir in $(COMMON_DIRS); do \
+         (echo $$dir; cd $$dir; make clean)||exit;\
+        done
+        for dir in $(TEST_DIRS); do \
+         (echo $$dir; cd $$dir; make clean)||exit;\
+        done
+
+common:
+        for dir in $(COMMON_DIRS); do \
+         (echo $$dir; cd $$dir; make)||exit;\
+        done
+
+doxygen:
+        doxygen ${VQMC_ROOT}/Doxyfile
+
+

@@ -1,0 +1,48 @@
+# common
+
+CXX = g++
+
+
+## variables defined via configure
+QMC_SRC_DIR = @abs_top_srcdir@
+QMC_BUILD_DIR = @BUILD_DIR@
+
+INCDIRS = -I$(VQMC_SRC_DIR)
+INCDIRS += -I$(VQMC_BUILD_DIR)
+
+
+# LIB C++ FLAGS
+LIBCXXFLAGS = -fPIC
+
+# C++ flags
+CXXFLAGS = -MD
+CXXFLAGS += -Wall
+CXXFLAGS += -Werror
+CXXFLAGS += -m32
+ifeq ("$(IS_DEBUG_BUILD)", "y")
+CXXFLAGS += -g
+else
+CXXFLAGS += -DNDEBUG
+CXXFLAGS += -O2
+endif
+CXXFLAGS += $(INCDIRS)
+
+# LD flags
+SHLIBFLAGS = -shared
+SHLIBFLAGS += -m32
+
+# directories for libraries
+LIBRARY_DIRECTORIES = $(VQMC_BUILD_DIR)src//Utilities
+LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)src//Wavefunctions
+LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)src//Energy_Terms
+LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)src//Configurations
+LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)src//Metropolis_Walker
+
+
+LIBDIRS = $(foreach dir, $(LIBRARY_DIRECTORIES), -L$(dir))
+RPATH_FLAGS = $(foreach dir, $(LIBRARY_DIRECTORIES), -Wl,--rpath -Wl,$(dir))
+
+%.o : %.cpp
+	$(CXX) $(CXXFLAGS) -c $<
+	@sed -i 's,\($*\.o\)[ :]*\(.*\),$@ : $$\(wildcard \2,g' $*.d
+	@sed -i '$$ s/$$/ \)/' $*.d
