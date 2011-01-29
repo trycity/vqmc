@@ -1,0 +1,162 @@
+/**
+ *@file VQMCconfig.h
+ *
+ *@author ikhan
+ */
+
+#ifndef _VQMCCONFIG_H
+#define _VQMCCONFIG_H
+
+#include <vector>
+#include <valarray>
+
+#include "Utilities/VMCPoint.h"
+#include "Utilities/rand.h"
+
+namespace VQMC
+{
+
+  /**
+   *@brief VMCconfig used to create basic phase space for monte carlo calculations.
+   */
+   class VQMCconfig
+   {
+   public:
+     /**
+      *Creates a Variational Quantum Monte Carlo Configuration (VQMCconfig) object
+      *
+      *@param The number of particles
+      *@param The number of dimensions
+      *@param The particle radius
+      *@param The box size of the phase space
+      */
+      VQMCconfig(unsigned NParticles, unsigned ndim, double ParticleRadius, const std::valarray<double>& BoxSize);
+
+      /**
+       *Destroys a VMCconfig object.
+       */
+      virtual ~VQMCconfig();
+
+      /**
+       *Performs a trial move of a node from some initial point to an endPoint
+       *
+       *@param A pointer to the chosen node
+       *@param The endpoint as defined by a VMCPoint
+       *@param A pointer to the probability value
+       */
+      virtual void TrialMove(unsigned* pnk, VMCPoint& endPoint, double* pdq) = 0;
+
+      /**
+       *Performs a move of a node from some initial point to a newPoint
+       *
+       *@param The node number
+       *@param The new position for the chosen node k
+       *@param if Energy should be computed or not
+       */
+      virtual void Move(unsigned k, const VMCPoint& newPoint, bool bComputeE) = 0;
+
+      /**
+       *gets the energy of the system
+       *
+       *@return The parameter m_Energy
+       */
+      double getEnergy();
+
+      /**
+       *gets the square of the energy
+       *
+       *@return The parameter m_EnergySqd;
+       */
+      double getEnergySqd();
+
+      /**
+       *gets the dimension of the system
+       *
+       *@return The parameter m_NDim
+       */
+      unsigned getDimension() const;
+
+      /**
+       *gets the number of particles in the system
+       *
+       *@return The parameter m_NParticles
+       */
+      unsigned getNParticles() const;
+
+      /**
+       *creates the initial configuration of the monte carlo simulation
+       */
+      virtual void Initialize();
+
+      /**
+       *This data member is the seed for random number generator
+       */
+      static const int m_Seed = -1234567890;
+
+   protected:
+      /**
+       *Computes the energy of the system
+       *
+       *@return The value of the energy
+       */
+      virtual double ComputeEnergy() = 0;
+
+      /**
+       *Computes the energy sqd of the system
+       *
+       *@return The value of the energy sqd
+       */
+      virtual double ComputeEnergySqd() = 0;
+
+      /**
+       *This data member is the number of particles in the system
+       */
+      unsigned m_NParticles;
+
+      /**
+       *This data member is the number of dimensions of the system
+       */
+      unsigned m_NDim;
+
+      /**
+       *This data member is the radius of the particles in the system
+       */
+      double m_radius0;
+
+      /**
+       *This data member defines the box size of the system
+       */
+      std::valarray<double> m_BoxSize;
+
+      /**
+       *This data member represents the coordinates of the particles
+       */
+      std::vector<VMCPoint> m_vPoints;
+
+      /**
+       *This data member is energy of the system
+       */
+      double m_Energy;
+
+      /**
+       *This data member is energy sqd of the system
+       */
+      double m_EnergySqd;
+
+      /**
+       *This data member is density of the system
+       */
+      double m_Density;
+
+      /**
+       *This data member determines whether energy is to be computed
+       */
+      bool m_EnergyComputed;
+
+   private:
+      //VQMCconfig(const VQMCconfig& rhsConfig);
+      //VQMCconfig& operator=(const VQMCconfig& rhsConfig);
+   };
+}; //end namespace VQMC
+
+#endif

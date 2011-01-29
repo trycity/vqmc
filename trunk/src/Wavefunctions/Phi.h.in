@@ -1,0 +1,35 @@
+/**
+ *@file Phi.h
+ *
+ *@author ikhan
+ */
+
+/*
+class used as a wrapper to create the 1-body external potential wavefunction term
+*/
+
+#ifndef _PHI_H
+#define _PHI_H
+
+#include "Utilities/VMCPoint.h"
+
+namespace VQMC
+{
+   /**
+   *@brief class used as a wrapper to create the 1-body external potential wavefunction term
+   */
+   class Phi
+   {
+   public:
+      virtual ~Phi() {}
+
+      virtual double operator()(const VMCPoint& x)const 
+      {
+         return 1.0;
+      }
+   };
+}; //end of namespace
+
+#endif
+
+

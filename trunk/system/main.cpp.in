@@ -1,0 +1,16 @@
+/*
+ * main.cpp
+ */
+
+
+#include <iostream>
+
+using namespace std;
+using namespace VQMC;
+
+
+int main()
+{
+
+   return 0;
+}
