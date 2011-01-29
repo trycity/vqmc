@@ -1,0 +1,63 @@
+// VMCMetropolisWalker.h
+
+/*
+Class describes behaviour of a variational Quantum Monte Carlo (VQMC) Metropolis walker, as defined by Metropolis algorithm
+*/
+
+#ifndef _VMCMETROPOLISWALKER_H
+#define _VMCMETROPOLISWALKER_H
+
+#include <cmath>
+#include <valarray>
+
+#include "Utilities/rand.h"
+#include "Utilities/VMCPoint.h"
+#include "Configurations/JastrowConfig.h"
+
+namespace VQMC
+{
+class VQMCMetropolisWalker
+{
+public:
+VQMCMetropolisWalker(const JastrowConfig& configi);
+~VQMCMetropolisWalker();
+
+void Run(unsigned nConfigInit, unsigned nConfigRun);
+double getEAve() const;
+double getEDev() const;
+double getEAveSqd() const;
+unsigned getNConfig() const;
+
+private:
+JastrowConfig m_Config;
+unsigned m_nConfig;
+double m_EAve;
+double m_EAveSqd;
+double m_EDev;
+};
+
+
+inline double VQMCMetropolisWalker::getEAve() const
+{
+return m_EAve;
+}
+
+inline double VQMCMetropolisWalker::getEDev() const
+{
+return m_EDev;
+}
+
+inline double VQMCMetropolisWalker::getEAveSqd() const
+{
+return m_EAveSqd;
+}
+
+inline unsigned VQMCMetropolisWalker::getNConfig() const
+{
+return m_nConfig;
+}
+
+};
+#endif
+
+
