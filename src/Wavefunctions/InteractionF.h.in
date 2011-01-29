@@ -1,0 +1,28 @@
+/**
+ *@file InteractionF.h
+ *
+ *@author ikhan
+ */
+
+#ifndef _INTERACTIONF_H
+#define _INTERACTIONF_H
+
+
+namespace VQMC
+{
+class InteractionF
+{
+public:
+   virtual ~InteractionF() {}
+
+   virtual double operator()(double rij)const
+   {
+     return 1.0;
+   }
+
+};
+};
+
+#endif
+
+
