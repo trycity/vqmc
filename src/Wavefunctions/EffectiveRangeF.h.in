@@ -1,0 +1,30 @@
+// EffectiveRangeF.h
+
+/*
+Class which represents interaction term as stated in 1953 Jastrow paper.
+*/
+
+#ifndef _EFFECTIVERANGEF_H
+#define _EFFECTIVERANGEF_H
+
+
+namespace VQMC
+{
+class EffectiveRangeF
+{
+public:
+EffectiveRangeF(){}
+explicit EffectiveRangeF(double as);
+~EffectiveRangeF();
+
+void setScatteringLength(double as);
+double operator()(double rij);
+
+private:
+double m_as; // S-Wave scattering length
+};
+};
+
+#endif
+
+
