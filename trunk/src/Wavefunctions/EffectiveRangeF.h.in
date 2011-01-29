@@ -10,10 +10,9 @@ Class which represents interaction term as stated in 1953 Jastrow paper.
 
 namespace VQMC
 {
-class EffectiveRangeF
+class EffectiveRangeF : public InteractionF
 {
 public:
-EffectiveRangeF(){}
 explicit EffectiveRangeF(double as);
 ~EffectiveRangeF();
 

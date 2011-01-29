@@ -12,7 +12,7 @@
 
 using namespace QMC;
 
-SymHoPhi::SymHoPhi(double alpha):m_Alpha(alpha)
+SymHoPhi::SymHoPhi(double alpha):m_Alpha(alpha), Phi()
 {
 }
 
