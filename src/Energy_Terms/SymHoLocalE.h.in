@@ -5,14 +5,15 @@
 #include <vector>
 
 #include "Utilities/VMCPoint.h"
+#include "localE.h"
 
 namespace VQMC
 {
-class SymHOERlocalE
+class SymHolocalE : public localE
 {
 public:
-	SymHOERlocalE(double alpha, double a)
-		: m_dalpha(alpha), m_da(a) {}
+	SymHolocalE(double alpha, double a)
+		: m_dalpha(alpha), m_da(a), localE() {}
 
 	double operator()(const std::vector<VMCPoint>& vPoints)
 	{
