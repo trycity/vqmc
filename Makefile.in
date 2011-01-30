@@ -16,7 +16,7 @@ COMMON_DIRS += src/Wavefunctions
 COMMON_DIRS += src/Energy_Terms
 COMMON_DIRS += src/Configurations
 COMMON_DIRS += src/Metropolis_Walker
-#COMMON_DIRS += system
+COMMON_DIRS += system
 
 
 

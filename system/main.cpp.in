@@ -5,12 +5,15 @@
 
 #include <iostream>
 
+#include "@BUILD_DIR@/src/Wavefunctions/Phi.h"
+
 using namespace std;
 using namespace VQMC;
 
 
 int main()
 {
+   std::cout<<"Test successful"<<std::endl;
 
    return 0;
 }
