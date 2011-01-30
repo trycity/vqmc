@@ -10,13 +10,13 @@
 #include <valarray>
 
 #include "VQMCconfig.h"
-#include "Utilities/rand.h"
-#include "Utilities/VMCPoint.h"
+#include "@BUILD_DIR@/src/Utilities/rand.h"
+#include "@BUILD_DIR@/src/Utilities/VMCPoint.h"
 
-#include "Wavefunctions/Phi.h"
-#include "Wavefunctions/InteractionF.h"
-#include "Energy_Terms/localE.h"
-#include "Energy_Terms/localESqd.h"
+#include "@BUILD_DIR@/src/Wavefunctions/Phi.h"
+#include "@BUILD_DIR@/src/Wavefunctions/InteractionF.h"
+#include "@BUILD_DIR@/src/Energy_Terms/localE.h"
+#include "@BUILD_DIR@/src/Energy_Terms/localESqd.h"
 
 namespace VQMC
 {

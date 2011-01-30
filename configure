@@ -1646,9 +1646,9 @@ ac_config_files="$ac_config_files Makefile.common"
 
 ac_config_files="$ac_config_files src/Configurations/Makefile"
 
-ac_config_files="$ac_config_files src/Configurations/VMCconfig.cpp"
+ac_config_files="$ac_config_files src/Configurations/VQMCconfig.cpp"
 
-ac_config_files="$ac_config_files src/Configurations/VMCconfig.h"
+ac_config_files="$ac_config_files src/Configurations/VQMCconfig.h"
 
 ac_config_files="$ac_config_files src/Configurations/JastrowConfig.cpp"
 
@@ -1660,10 +1660,12 @@ ac_config_files="$ac_config_files src/Energy_Terms/localE.h"
 
 ac_config_files="$ac_config_files src/Energy_Terms/localESqd.h"
 
-#AC_CONFIG_FILES([src/Energy_Terms/SymHoLocalE.cpp])
+ac_config_files="$ac_config_files src/Energy_Terms/SymHoLocalE.cpp"
+
 ac_config_files="$ac_config_files src/Energy_Terms/SymHoLocalE.h"
 
-#AC_CONFIG_FILES([src/Energy_Terms/SymHoLocalESqd.cpp])
+ac_config_files="$ac_config_files src/Energy_Terms/SymHoLocalESqd.cpp"
+
 ac_config_files="$ac_config_files src/Energy_Terms/SymHoLocalESqd.h"
 
 ac_config_files="$ac_config_files src/Utilities/Makefile"
@@ -1680,18 +1682,12 @@ ac_config_files="$ac_config_files src/Metropolis_Walker/VQMCMetropolisWalker.cpp
 
 ac_config_files="$ac_config_files src/Metropolis_Walker/VQMCMetropolisWalker.h"
 
-ac_config_files="$ac_config_files src/system/main.cpp"
-
 ac_config_files="$ac_config_files src/Wavefunctions/Makefile"
 
 ac_config_files="$ac_config_files src/Wavefunctions/EffectiveRangeF.cpp"
 
 ac_config_files="$ac_config_files src/Wavefunctions/EffectiveRangeF.h"
 
-#AC_CONFIG_FILES([src/Wavefunctions/HardSphereF.cpp])
-#AC_CONFIG_FILES([src/Wavefunctions/HardSphereF.h])
-#AC_CONFIG_FILES([src/Wavefunctions/HomogeneousPhi.cpp])
-#AC_CONFIG_FILES([src/Wavefunctions/HomogeneousPhi.h])
 ac_config_files="$ac_config_files src/Wavefunctions/InteractionF.h"
 
 ac_config_files="$ac_config_files src/Wavefunctions/Phi.h"
@@ -1699,6 +1695,8 @@ ac_config_files="$ac_config_files src/Wavefunctions/Phi.h"
 ac_config_files="$ac_config_files src/Wavefunctions/SymHoPhi.cpp"
 
 ac_config_files="$ac_config_files src/Wavefunctions/SymHoPhi.h"
+
+ac_config_files="$ac_config_files system/main.cpp"
 
 
 
@@ -2403,14 +2401,16 @@ do
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "Makefile.common") CONFIG_FILES="$CONFIG_FILES Makefile.common" ;;
     "src/Configurations/Makefile") CONFIG_FILES="$CONFIG_FILES src/Configurations/Makefile" ;;
-    "src/Configurations/VMCconfig.cpp") CONFIG_FILES="$CONFIG_FILES src/Configurations/VMCconfig.cpp" ;;
-    "src/Configurations/VMCconfig.h") CONFIG_FILES="$CONFIG_FILES src/Configurations/VMCconfig.h" ;;
+    "src/Configurations/VQMCconfig.cpp") CONFIG_FILES="$CONFIG_FILES src/Configurations/VQMCconfig.cpp" ;;
+    "src/Configurations/VQMCconfig.h") CONFIG_FILES="$CONFIG_FILES src/Configurations/VQMCconfig.h" ;;
     "src/Configurations/JastrowConfig.cpp") CONFIG_FILES="$CONFIG_FILES src/Configurations/JastrowConfig.cpp" ;;
     "src/Configurations/JastrowConfig.h") CONFIG_FILES="$CONFIG_FILES src/Configurations/JastrowConfig.h" ;;
     "src/Energy_Terms/Makefile") CONFIG_FILES="$CONFIG_FILES src/Energy_Terms/Makefile" ;;
     "src/Energy_Terms/localE.h") CONFIG_FILES="$CONFIG_FILES src/Energy_Terms/localE.h" ;;
     "src/Energy_Terms/localESqd.h") CONFIG_FILES="$CONFIG_FILES src/Energy_Terms/localESqd.h" ;;
+    "src/Energy_Terms/SymHoLocalE.cpp") CONFIG_FILES="$CONFIG_FILES src/Energy_Terms/SymHoLocalE.cpp" ;;
     "src/Energy_Terms/SymHoLocalE.h") CONFIG_FILES="$CONFIG_FILES src/Energy_Terms/SymHoLocalE.h" ;;
+    "src/Energy_Terms/SymHoLocalESqd.cpp") CONFIG_FILES="$CONFIG_FILES src/Energy_Terms/SymHoLocalESqd.cpp" ;;
     "src/Energy_Terms/SymHoLocalESqd.h") CONFIG_FILES="$CONFIG_FILES src/Energy_Terms/SymHoLocalESqd.h" ;;
     "src/Utilities/Makefile") CONFIG_FILES="$CONFIG_FILES src/Utilities/Makefile" ;;
     "src/Utilities/rand.cpp") CONFIG_FILES="$CONFIG_FILES src/Utilities/rand.cpp" ;;
@@ -2419,7 +2419,6 @@ do
     "src/Metropolis_Walker/Makefile") CONFIG_FILES="$CONFIG_FILES src/Metropolis_Walker/Makefile" ;;
     "src/Metropolis_Walker/VQMCMetropolisWalker.cpp") CONFIG_FILES="$CONFIG_FILES src/Metropolis_Walker/VQMCMetropolisWalker.cpp" ;;
     "src/Metropolis_Walker/VQMCMetropolisWalker.h") CONFIG_FILES="$CONFIG_FILES src/Metropolis_Walker/VQMCMetropolisWalker.h" ;;
-    "src/system/main.cpp") CONFIG_FILES="$CONFIG_FILES src/system/main.cpp" ;;
     "src/Wavefunctions/Makefile") CONFIG_FILES="$CONFIG_FILES src/Wavefunctions/Makefile" ;;
     "src/Wavefunctions/EffectiveRangeF.cpp") CONFIG_FILES="$CONFIG_FILES src/Wavefunctions/EffectiveRangeF.cpp" ;;
     "src/Wavefunctions/EffectiveRangeF.h") CONFIG_FILES="$CONFIG_FILES src/Wavefunctions/EffectiveRangeF.h" ;;
@@ -2427,6 +2426,7 @@ do
     "src/Wavefunctions/Phi.h") CONFIG_FILES="$CONFIG_FILES src/Wavefunctions/Phi.h" ;;
     "src/Wavefunctions/SymHoPhi.cpp") CONFIG_FILES="$CONFIG_FILES src/Wavefunctions/SymHoPhi.cpp" ;;
     "src/Wavefunctions/SymHoPhi.h") CONFIG_FILES="$CONFIG_FILES src/Wavefunctions/SymHoPhi.h" ;;
+    "system/main.cpp") CONFIG_FILES="$CONFIG_FILES system/main.cpp" ;;
 
   *) as_fn_error "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

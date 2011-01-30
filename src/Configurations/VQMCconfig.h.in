@@ -10,8 +10,8 @@
 #include <vector>
 #include <valarray>
 
-#include "Utilities/VMCPoint.h"
-#include "Utilities/rand.h"
+#include "@BUILD_DIR@/src/Utilities/VMCPoint.h"
+#include "@BUILD_DIR@/src/Utilities/rand.h"
 
 namespace VQMC
 {
@@ -91,7 +91,7 @@ namespace VQMC
       /**
        *This data member is the seed for random number generator
        */
-      static const int m_Seed = -1234567890;
+      int m_Seed;
 
    protected:
       /**

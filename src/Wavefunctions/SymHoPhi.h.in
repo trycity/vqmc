@@ -11,7 +11,8 @@ Class depicting symmetric harmonic oscillator Phi (SymHoPhi)
 #ifndef _SYMHOPHI_H
 #define _SYMHOPHI_H
 
-#include "Utilities/VMCPoint.h"
+#include "@BUILD_DIR@/src/Utilities/VMCPoint.h"
+#include "Phi.h"
 
 namespace VQMC
 {

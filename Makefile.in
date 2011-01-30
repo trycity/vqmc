@@ -16,31 +16,31 @@ COMMON_DIRS += src/Wavefunctions
 COMMON_DIRS += src/Energy_Terms
 COMMON_DIRS += src/Configurations
 COMMON_DIRS += src/Metropolis_Walker
-COMMON_DIRS += system
+#COMMON_DIRS += system
 
 
 
 .PHONY: all clean common doxygen c++
 
 all: $(TARGETS)
-        echo $(TARGETS)
+	echo $(TARGETS)
 
 c++: $(CPP_TARGETS)
 
 clean:
-        for dir in $(COMMON_DIRS); do \
+	for dir in $(COMMON_DIRS); do \
          (echo $$dir; cd $$dir; make clean)||exit;\
         done
-        for dir in $(TEST_DIRS); do \
+	for dir in $(TEST_DIRS); do \
          (echo $$dir; cd $$dir; make clean)||exit;\
         done
 
 common:
-        for dir in $(COMMON_DIRS); do \
+	for dir in $(COMMON_DIRS); do \
          (echo $$dir; cd $$dir; make)||exit;\
         done
 
 doxygen:
-        doxygen ${VQMC_ROOT}/Doxyfile
+	doxygen ${VQMC_ROOT}/Doxyfile
 
 

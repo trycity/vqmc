@@ -5,7 +5,7 @@
 
 #include <vector>
 
-#include "Utilities/VMCPoint.h"
+#include "@BUILD_DIR@/src/Utilities/VMCPoint.h"
 
 namespace VQMC
 {
