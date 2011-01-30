@@ -32,11 +32,11 @@ SHLIBFLAGS = -shared
 SHLIBFLAGS += -m32
 
 # directories for libraries
-LIBRARY_DIRECTORIES = $(VQMC_BUILD_DIR)src//Utilities
-LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)src//Wavefunctions
-LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)src//Energy_Terms
-LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)src//Configurations
-LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)src//Metropolis_Walker
+LIBRARY_DIRECTORIES = $(VQMC_BUILD_DIR)/src/Utilities
+LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)/src/Wavefunctions
+LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)/src/Energy_Terms
+LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)/src/Configurations
+LIBRARY_DIRECTORIES += $(VQMC_BUILD_DIR)/src/Metropolis_Walker
 
 
 LIBDIRS = $(foreach dir, $(LIBRARY_DIRECTORIES), -L$(dir))

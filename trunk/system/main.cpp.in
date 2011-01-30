@@ -4,8 +4,19 @@
 
 
 #include <iostream>
+#include <iomanip>
+#include <fstream>
 
-#include "@BUILD_DIR@/src/Wavefunctions/Phi.h"
+#include "@BUILD_DIR@/src/Wavefunctions/SymHoPhi.h"
+#include "@BUILD_DIR@/src/Wavefunctions/EffectiveRangeF.h"
+
+#include "@BUILD_DIR@/src/Configurations/JastrowConfig.h"
+
+#include "@BUILD_DIR@/src/Energy_Terms/SymHoLocalE.h"
+#include "@BUILD_DIR@/src/Energy_Terms/SymHoLocalESqd.h"
+
+#include "@BUILD_DIR@/src/Metropolis_Walker/VQMCMetropolisWalker.h"
+
 
 using namespace std;
 using namespace VQMC;
@@ -13,7 +24,87 @@ using namespace VQMC;
 
 int main()
 {
-   std::cout<<"Test successful"<<std::endl;
+   unsigned NDIM = 3;
+   unsigned nConfigInit = 1000;
+   unsigned nConfigs = 100000;
+   unsigned nRuns = 100;
+   unsigned Nalpha = 3;
+   
+   unsigned NATOMS = 3;
+   double a = 5.2e-9/1.2e-6; // scattering length
+   valarray<double> BOXSIZES(NDIM);
+   BOXSIZES[0] = 5.1;
+   BOXSIZES[1] = 5.1;
+   BOXSIZES[2] = 5.1;
+   double r0 = a;
+   double alphai = 0.49;
+   double alphaf = 0.52;
+
+   ofstream ofs("test1.txt");
+   ofs << scientific;
+   ofs.precision(6);
+   ofs << setw(16) << "alpha"
+	<< setw(16) << "AveEave"
+	<< setw(16) << "VarEave"
+	<< setw(16) << "AveEdev"
+	<< setw(16) << "VarEdev"
+	<< endl;
+
+   double h = (alphaf-alphai)/Nalpha;
+
+   for(unsigned k=0;k<Nalpha;k++)
+   {
+      double alpha = alphai+k*h;
+      cout << "Working on alpha = " << alpha << endl;
+
+      SymHoPhi wfnPhi(alpha);
+      EffectiveRangeF wfnF(a);
+      SymHoLocalE localE(alpha,a);
+      SymHoLocalESqd localEsqd(alpha, a);
+
+      JastrowConfig configi(NATOMS, NDIM, r0, BOXSIZES, wfnPhi, wfnF, localE, localEsqd);
+
+      VQMCMetropolisWalker walker(configi);
+
+	// Initial run
+	walker.Run(nConfigInit,nConfigs);
+	double Eave = walker.getEAve();
+	double Edev = walker.getEDev();
+	double EaveSum = Eave;
+	double Eave2Sum = Eave*Eave;
+	double EdevSum = Edev;
+	double Edev2Sum = Edev*Edev;
+	for(unsigned i=1;i<nRuns;i++) 
+        {
+		walker.Run(0,nConfigs);
+		Eave = walker.getEAve();
+		Edev = walker.getEDev();
+		cout << "For Run #" << i << endl;
+		cout << "Eave = " << Eave << endl;
+		cout << "Edev = " << Edev << endl;
+		EaveSum += Eave;
+		Eave2Sum += Eave*Eave;
+		EdevSum += Edev;
+		Edev2Sum += Edev*Edev;
+	}
+		double AveEave = EaveSum/nRuns;
+		double VarEave = sqrt(Eave2Sum/nRuns-AveEave*AveEave);
+		double AveEdev = EdevSum/nRuns;
+		double VarEdev = sqrt(Edev2Sum/nRuns-AveEdev*AveEdev);
+
+		ofs << setw(16) << alpha
+			<< setw(16) << AveEave
+			<< setw(16) << VarEave
+			<< setw(16) << AveEdev
+			<< setw(16) << VarEdev
+			<< endl;
+	}
+	ofs << endl << endl;
+	ofs << fixed;
+	ofs << "NAtoms = " << NATOMS << endl;
+	ofs << "BoxSize_x = " << BOXSIZES[0] << endl;
+	ofs << "nConfigs = " << nConfigs << endl;
+	ofs << "nRuns = " << nRuns << endl;
 
    return 0;
 }

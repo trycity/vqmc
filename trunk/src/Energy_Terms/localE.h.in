@@ -1,7 +1,7 @@
 // localE.h
 
-#ifndef _LOCALE_H
-#define _LOCALE_H
+#ifndef _LOCALe_H
+#define _LOCALe_H
 
 #include <vector>
 
