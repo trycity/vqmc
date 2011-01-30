@@ -13,12 +13,12 @@ SymHoLocalE::~SymHoLocalE()
 {
 }
 
-double SymHoLocalE::operator()(const std::vector<VMCPoint>& vPoints)
+double SymHoLocalE::operator()(const std::vector<VMCPoint>& vPoints)const
 {
 		unsigned N = (unsigned)vPoints.size();
 		std::valarray<double> y = vPoints[0]*vPoints[0];
 		double r1sqd = y.sum();
-		double e = 3.0*m_dalpha+0.5*(1.0-4.0*m_dalpha*m_dalpha)*r1sqd;
+		double e = 3.0*m_dalpha;//+0.5*(1.0-4.0*m_dalpha*m_dalpha)*r1sqd;
 
 		double r2sqd, r12sqd, r12, r13sqd, r13, r23sqd;
 		if(N>1) {
@@ -27,7 +27,7 @@ double SymHoLocalE::operator()(const std::vector<VMCPoint>& vPoints)
 			y = (vPoints[0]-vPoints[1])*(vPoints[0]-vPoints[1]);
 			r12sqd = y.sum();
 			r12 = sqrt(r12sqd);
-			e += (N-1)*m_dalpha*(r1sqd+r12sqd-r2sqd)/((r12/m_da-1.0)*r12sqd);
+			e += (N-1.0)*m_dalpha*(r1sqd+r12sqd-r2sqd)/((r12/m_da-1.0)*r12sqd);
 		}
 
 		if(N>2) {
@@ -36,7 +36,8 @@ double SymHoLocalE::operator()(const std::vector<VMCPoint>& vPoints)
 			r13 = sqrt(r13sqd);
 			y = (vPoints[1]-vPoints[2])*(vPoints[1]-vPoints[2]);
 			r23sqd = y.sum();
-			e -= 0.25*(N-1)*(N-2)*(r12sqd+r13sqd-r23sqd)/(r12sqd*r13sqd*(r12/m_da-1.0)*(r13/m_da-1.0));
+			e -= 0.25*(N-1.0)*(N-2.0)*(r12sqd+r13sqd-r23sqd)/(r12sqd*r13sqd*(r12/m_da-1.0)*(r13/m_da-1.0));
 		}
+
 		return e;
 }

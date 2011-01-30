@@ -5,6 +5,7 @@
 
 #include <vector>
 
+
 #include "@BUILD_DIR@/src/Utilities/VMCPoint.h"
 
 namespace VQMC
@@ -18,6 +19,7 @@ class localE
   {
     return 1.0;
   }
+
 };
 };
 
