@@ -35,6 +35,7 @@ AC_CONFIG_FILES([src/Wavefunctions/Phi.h])
 AC_CONFIG_FILES([src/Wavefunctions/SymHoPhi.cpp])
 AC_CONFIG_FILES([src/Wavefunctions/SymHoPhi.h])
 AC_CONFIG_FILES([system/main.cpp])
+AC_CONFIG_FILES([system/Makefile])
 
 
 AC_OUTPUT

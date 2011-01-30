@@ -1698,6 +1698,8 @@ ac_config_files="$ac_config_files src/Wavefunctions/SymHoPhi.h"
 
 ac_config_files="$ac_config_files system/main.cpp"
 
+ac_config_files="$ac_config_files system/Makefile"
+
 
 
 cat >confcache <<\_ACEOF
@@ -2427,6 +2429,7 @@ do
     "src/Wavefunctions/SymHoPhi.cpp") CONFIG_FILES="$CONFIG_FILES src/Wavefunctions/SymHoPhi.cpp" ;;
     "src/Wavefunctions/SymHoPhi.h") CONFIG_FILES="$CONFIG_FILES src/Wavefunctions/SymHoPhi.h" ;;
     "system/main.cpp") CONFIG_FILES="$CONFIG_FILES system/main.cpp" ;;
+    "system/Makefile") CONFIG_FILES="$CONFIG_FILES system/Makefile" ;;
 
   *) as_fn_error "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
