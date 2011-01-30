@@ -9,7 +9,7 @@ SOURCES = $(shell ls $(VQMC_BUILD_DIR)/system/*.cpp | sed "s|$(VQMC_BUILD_DIR)/s
 .PHONY: all clean
 
 all:	$(SOURCES)
-	$(CXX)$(CXXFLAGS)
+	$(CXX) $(CXXFLAGS) -o vqmc $(SOURCES)
 
 clean:
 	$(shell rm *.o *.d)
