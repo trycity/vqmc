@@ -4,7 +4,6 @@
  *@author ikhan
  */
 
-#include <iostream>
 #include "VQMCMetropolisWalker.h"
 
 using namespace VQMC;
@@ -53,7 +52,6 @@ void VQMCMetropolisWalker::Run(unsigned nConfigInit, unsigned nConfigRun)
       }
 				
       Energy = m_Config.getEnergy();
-      ::std::cout<<"Energy = "<<Energy<<::std::endl;
       EnergySqd = m_Config.getEnergySqd();
       EnergySum += Energy;
       EnergySqdSum += EnergySqd;
