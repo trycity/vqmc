@@ -1,0 +1,17 @@
+VQMC_BUILD_DIR = @BUILD_DIR@
+
+include ../Makefile.common
+
+CXXFLAGS += -I$(VQMC_BUILD_DIR)/src/Utilities
+
+SOURCES = $(shell ls $(VQMC_BUILD_DIR)/system/*.cpp | sed "s|$(VQMC_BUILD_DIR)/system/||g")
+
+.PHONY: all clean
+
+all:	$(SOURCES)
+	$(CXX)$(CXXFLAGS)
+
+clean:
+	$(shell rm *.o *.d)
+
+-include $(OBJECTS:.o=.d)
