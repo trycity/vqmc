@@ -16,24 +16,24 @@ Class describes behaviour of a variational Quantum Monte Carlo (VQMC) Metropolis
 
 namespace VQMC
 {
-class VQMCMetropolisWalker
-{
-public:
-VQMCMetropolisWalker(const JastrowConfig& configi);
-~VQMCMetropolisWalker();
+   class VQMCMetropolisWalker
+   {
+   public:
+      VQMCMetropolisWalker(const JastrowConfig& configi);
+      ~VQMCMetropolisWalker();
 
-void Run(unsigned nConfigInit, unsigned nConfigRun);
-double getEAve() const;
-double getEDev() const;
-double getEAveSqd() const;
-unsigned getNConfig() const;
+      void Run(unsigned nConfigInit, unsigned nConfigRun);
+      double getEAve() const;
+      double getEDev() const;
+      double getEAveSqd() const;
+      unsigned getNConfig() const;
 
-private:
-JastrowConfig m_Config;
-unsigned m_nConfig;
-double m_EAve;
-double m_EAveSqd;
-double m_EDev;
+   private:
+      JastrowConfig m_Config;
+      unsigned m_nConfig;
+      double m_EAve;
+      double m_EAveSqd;
+      double m_EDev;
 };
 
 

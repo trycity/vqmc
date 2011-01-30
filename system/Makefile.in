@@ -1,17 +1,28 @@
+LIBNAME = system
 VQMC_BUILD_DIR = @BUILD_DIR@
 
 include ../Makefile.common
 
-CXXFLAGS += -I$(VQMC_BUILD_DIR)/src/Utilities
+CXXFLAGS += $(LIBDIRS)
 
-SOURCES = $(shell ls $(VQMC_BUILD_DIR)/system/*.cpp | sed "s|$(VQMC_BUILD_DIR)/system/||g")
+LIBS = -lVQMCUtilities
+LIBS += -lVQMCConfigurations
+LIBS += -lVQMCEnergy_Terms
+LIBS += -lVQMCWavefunctions
+LIBS += -lVQMCMetropolis_Walker
 
-.PHONY: all clean
 
-all:	$(SOURCES)
-	$(CXX) $(CXXFLAGS) -o vqmc $(SOURCES)
+VPATH = $(VQMC_BUILD_DIR)/$(LIBNAME):.
+SOURCES = $(shell ls $(VQMC_BUILD_DIR)/$(LIBNAME)/*.cpp | sed "s|$(VQMC_BUILD_DIR)/$(LIBNAME)/||g")
+OBJECTS = $(SOURCES:.cpp=.o)
+
+.PHONY: all clean 
+
+all: $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $(RPATH_FLAGS) $(LIBS) -o vqmc $(OBJECTS)
+
 
 clean:
-	$(shell rm *.o *.d)
+	$(shell rm $(OBJECTS) *.so *.d)
 
--include $(OBJECTS:.o=.d)
+-include $(SOURCES:.cpp=.d)
