@@ -15,11 +15,11 @@ SHLIBFLAGS += -m32
 all: $(OBJECTS) lib
 
 lib:
-        @echo $(OBJECTS)
-        $(CXX) $(SHLIBFLAGS) -o libVQMC$(LIBNAME).so $(OBJECTS)
+	@echo $(OBJECTS)
+	$(CXX) $(SHLIBFLAGS) -o libVQMC$(LIBNAME).so $(OBJECTS)
 
 
 clean:
-        $(shell rm *.o *.d)
+	$(shell rm *.o *.d)
 
 -include $(OBJECTS:.o=.d)

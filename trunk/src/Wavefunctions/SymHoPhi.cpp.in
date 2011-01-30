@@ -10,9 +10,9 @@
 #include "SymHoPhi.h"
 #include "Phi.h"
 
-using namespace QMC;
+using namespace VQMC;
 
-SymHoPhi::SymHoPhi(double alpha):m_Alpha(alpha), Phi()
+SymHoPhi::SymHoPhi(double alpha):Phi(), m_Alpha(alpha)
 {
 }
 

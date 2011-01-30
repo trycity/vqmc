@@ -4,7 +4,7 @@
 
 using namespace VQMC;
 
-EffectiveRangeF::EffectiveRangeF(double as):m_as(as), InteractionF()
+EffectiveRangeF::EffectiveRangeF(double as):InteractionF(), m_as(as)
 {
 }
 

@@ -10,9 +10,9 @@ Class describes behaviour of a variational Quantum Monte Carlo (VQMC) Metropolis
 #include <cmath>
 #include <valarray>
 
-#include "Utilities/rand.h"
-#include "Utilities/VMCPoint.h"
-#include "Configurations/JastrowConfig.h"
+#include "@BUILD_DIR@/src/Utilities/rand.h"
+#include "@BUILD_DIR@/src/Utilities/VMCPoint.h"
+#include "@BUILD_DIR@/src/Configurations/JastrowConfig.h"
 
 namespace VQMC
 {

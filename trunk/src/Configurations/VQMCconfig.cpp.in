@@ -14,6 +14,7 @@ VQMCconfig::VQMCconfig(unsigned NParticles, unsigned ndim, double ParticleRadius
    m_Energy = 0.0;
    m_EnergySqd = 0.0;
    m_EnergyComputed = false;
+   m_Seed = -123456789;
 
    Initialize();
 }
