@@ -6,7 +6,7 @@ SymHoLocalESqd::SymHoLocalESqd(double alpha, double a): localESqd(), m_dalpha(al
 
 SymHoLocalESqd::~SymHoLocalESqd(){}
 
-double SymHoLocalESqd::operator()(const std::vector<VMCPoint>& vPoints)
+double SymHoLocalESqd::operator()(const std::vector<VMCPoint>& vPoints)const
 {
 unsigned N = (unsigned)vPoints.size();
 		std::valarray<double> y = vPoints[0]*vPoints[0];

@@ -58,7 +58,7 @@ void VQMCMetropolisWalker::Run(unsigned nConfigInit, unsigned nConfigRun)
    }
 			
    m_EAve = EnergySum/m_nConfig;
-   m_EAveSqd = EnergySqdSum/m_nConfig;
+   m_EAveSqd = EnergySqdSum;
    m_EDev = sqrt(m_EAveSqd/m_nConfig - m_EAve*m_EAve);
    			
    //return m_nConfig;

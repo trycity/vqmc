@@ -65,10 +65,10 @@ namespace VQMC
       double ComputeEnergy();		
       double ComputeEnergySqd();
 					
-      Phi m_wfnPhi;
-      InteractionF m_wfnF;
-      localE m_localEn;
-      localESqd m_localEnSqd;
+      const Phi& m_wfnPhi;
+      const InteractionF& m_wfnF;
+      const localE& m_localEn;
+      const localESqd& m_localEnSqd;
       static const unsigned m_MaxCorrelation = 3;		
    };
 }; // end of namespace
