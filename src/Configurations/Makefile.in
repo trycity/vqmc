@@ -8,6 +8,7 @@ include ../../Makefile.common
 CXXFLAGS += -I$(VQMC_BUILD_DIR)/src//Utilities
 CXXFLAGS += -I$(VQMC_BUILD_DIR)/src//Wavefunctions
 CXXFLAGS += -I$(VQMC_BUILD_DIR)/src/Energy_Terms
+CXXFLAGS += -fopenmp
 
 SOURCES = $(shell ls $(VQMC_BUILD_DIR)/src/$(LIBNAME)/*.cpp | sed "s|$(QMC_BUILD_DIR)/$(LIBNAME)/||g")
 OBJECTS = $(SOURCES:.cpp=.o)

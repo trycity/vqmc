@@ -5,7 +5,7 @@
  */
 
 #include <valarray>
-
+#include "omp.h"
 
 #include "JastrowConfig.h"
 
@@ -45,11 +45,14 @@ void JastrowConfig::TrialMove(unsigned* pnWalked, VMCPoint& endPoint, double* pd
 			
    /// compute its distance to other particles
    std::valarray<double> rki(m_NParticles-1);
+
+   //#pragma omp for
    for(unsigned i=0; i<k; i++)
    {
       rki[i] = VmcDistance(m_vPoints[k], m_vPoints[i]);
    }
 
+   //#pragma omp for
    for(unsigned i=k+1; i<m_NParticles; i++)
    {
       rki[i-1] = VmcDistance(m_vPoints[k], m_vPoints[i]);

@@ -18,7 +18,7 @@ explicit EffectiveRangeF(double as);
 ~EffectiveRangeF();
 
 void setScatteringLength(double as);
-double operator()(double rij);
+double operator()(double rij)const;
 
 private:
 double m_as; // S-Wave scattering length

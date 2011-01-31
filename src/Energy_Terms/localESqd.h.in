@@ -14,7 +14,7 @@ class localESqd
  public:
   virtual ~localESqd(){}
 
-  virtual double operator()(const std::vector<VMCPoint>& vPoints)
+  virtual double operator()(const std::vector<VMCPoint>& vPoints)const
    {
      return 1.0;
    }

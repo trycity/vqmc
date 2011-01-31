@@ -15,7 +15,7 @@ public:
 	SymHoLocalESqd(double alpha, double a);
         ~SymHoLocalESqd();
 
-	double operator()(const std::vector<VMCPoint>& vPoints);
+	double operator()(const std::vector<VMCPoint>& vPoints)const;
 
 private:
 	double m_dalpha;
