@@ -5,8 +5,8 @@ VQMC_BUILD_DIR = @BUILD_DIR@
 
 include ../../Makefile.common
 
-CXXFLAGS += -I$(VQMC_BUILD_DIR)/src//Utilities
-CXXFLAGS += -I$(VQMC_BUILD_DIR)/src//Wavefunctions
+CXXFLAGS += -I$(VQMC_BUILD_DIR)/src/Utilities
+CXXFLAGS += -I$(VQMC_BUILD_DIR)/src/Wavefunctions
 CXXFLAGS += -I$(VQMC_BUILD_DIR)/src/Energy_Terms
 CXXFLAGS += -fopenmp
 
@@ -16,6 +16,7 @@ OBJECTS = $(SOURCES:.cpp=.o)
 LIBS = -lVQMCUtilities
 LIBS += -lVQMCWavefunctions
 LIBS += -lVQMCEnergy_Terms
+LIBS += -lgomp
 
 # LD flags
 SHLIBFLAGS = -shared
