@@ -1,4 +1,8 @@
-// localESqd.h
+/**
+ *@file localESqd.h
+ *
+ *@author ikhan
+ */
 
 #ifndef _LOCALESQD_H
 #define _LOCALESQD_H
@@ -9,15 +13,30 @@
 
 namespace VQMC
 {
-class localESqd
-{
- public:
-  virtual ~localESqd(){}
-
-  virtual double operator()(const std::vector<VMCPoint>& vPoints)const
+   /**
+   *@brief localESqd is used to compute the square of the energy of a system.  This class would be suitable for a homogeneous system of
+   * two (or more) non-interacting particles.  In the majority of simulations the method call operator would be overriden
+   */
+   class localESqd
    {
-     return 1.0;
-   }
-};
+   public:
+
+      /**
+       *Destroys a localESqd object.
+       */
+      virtual ~localESqd(){}
+
+      /**
+       *overloaded oprator() used to compute square of the energy of a system
+       *
+       *@param A vector of VMCPoints, which represent a particular atomic configuration
+       *
+       *@return The energy squared of a system
+       */
+      virtual double operator()(const std::vector<VMCPoint>& vPoints)const
+      {
+         return 0.0;
+      }
+   };
 };
 #endif

@@ -18,7 +18,7 @@ double SymHoLocalE::operator()(const std::vector<VMCPoint>& vPoints)const
 		unsigned N = (unsigned)vPoints.size();
 		std::valarray<double> y = vPoints[0]*vPoints[0];
 		double r1sqd = y.sum();
-		double e = 3.0*m_dalpha;//+0.5*(1.0-4.0*m_dalpha*m_dalpha)*r1sqd;
+		double e = 3.0*m_dalpha+0.5*(1.0-4.0*m_dalpha*m_dalpha)*r1sqd;
 
 		double r2sqd, r12sqd, r12, r13sqd, r13, r23sqd;
 		if(N>1) {
