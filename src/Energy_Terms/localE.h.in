@@ -1,26 +1,45 @@
-// localE.h
+/**
+ *@file localE.h
+ *
+ *@author ikhan
+ */
 
 #ifndef _LOCALe_H
 #define _LOCALe_H
 
 #include <vector>
 
-
 #include "@BUILD_DIR@/src/Utilities/VMCPoint.h"
+
 
 namespace VQMC
 {
-class localE
-{
- public:
-  virtual ~localE() {}
+   /**
+   *@brief localE is used to compute the energy of the system.  This class would be suitable for a homogeneous system of
+   * two (or more) non-interacting particles.  In the majority of simulations the method call operator would be overriden
+   */
+   class localE
+   {
+   public:
 
-  virtual double operator()(const std::vector<VMCPoint>& vPoints)const
-  {
-    return 1.0;
-  }
+      /**
+       *Destroys a localE object.
+       */
+      virtual ~localE() {}
 
-};
+      /**
+       *overloaded oprator() used to compute energy of a system
+       *
+       *@param A vector of VMCPoints, which represent a particular atomic configuration
+       *
+       *@return The energy of a system
+       */
+      virtual double operator()(const std::vector<VMCPoint>& vPoints)const
+      {
+         return 0.0;
+      }
+
+   };
 };
 
 #endif

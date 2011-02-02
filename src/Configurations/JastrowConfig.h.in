@@ -56,19 +56,58 @@ namespace VQMC
        * Destroys a JastrowConfig object
        */    
       ~JastrowConfig();
-					
-      void TrialMove(unsigned* pnWalked, VMCPoint& endPoint, double* pdq);		
+      
+      /**
+       *Performs a trial move of a node from some initial point to an endPoint
+       *
+       *@param A pointer to the chosen node
+       *@param The endpoint as defined by a VMCPoint
+       *@param A pointer to the probability value
+       */					
+      void TrialMove(unsigned* pnWalked, VMCPoint& endPoint, double* pdq);
+
+      /**
+       *Performs a move of a node from some initial point to a newPoint
+       *
+       *@param The node number
+       *@param The new position for the chosen node k
+       *@param if Energy should be computed or not
+       */		
       void Move(unsigned k, const VMCPoint& newPoint, bool bComputeE);
 	
    protected:
 
-      double ComputeEnergy();		
+      /**
+       *Computes the energy of the system
+       *
+       *@return The energy of the system
+       */
+      double ComputeEnergy();	
+
+      /**
+       *Computes the square of the energy of the system
+       *
+       *@return The energy squared of the system
+       */	
       double ComputeEnergySqd();
-					
+
+      /// This data member represents the 1-body wavefunction				
       const Phi& m_wfnPhi;
+
+      /// This data member represents the 2-body wavefunction
       const InteractionF& m_wfnF;
+
+      /// This data member represents the local energy
       const localE& m_localEn;
+
+      /// This data member represents the square of the local energy
       const localESqd& m_localEnSqd;
+
+      /**
+       * The maximum number of correlations determines if the energy of the system should be recomputed.  
+       * If any of the first three particles alter their position then the energy is computed otherwise a previous value of energy is used.
+       * This is a property of many body bose-systems
+       */
       static const unsigned m_MaxCorrelation = 3;		
    };
 }; // end of namespace
