@@ -1,8 +1,8 @@
-// VMCMetropolisWalker.h
-
-/*
-Class describes behaviour of a variational Quantum Monte Carlo (VQMC) Metropolis walker, as defined by Metropolis algorithm
-*/
+/**
+ *@file VQMCMetropolisWalker.h
+ *
+ *@author ikhan
+ */
 
 #ifndef _VMCMETROPOLISWALKER_H
 #define _VMCMETROPOLISWALKER_H
@@ -16,6 +16,10 @@ Class describes behaviour of a variational Quantum Monte Carlo (VQMC) Metropolis
 
 namespace VQMC
 {
+
+   /**
+   *@brief Class describes behaviour of a variational Quantum Monte Carlo (VQMC) Metropolis walker, as defined by Metropolis algorithm
+   */
    class VQMCMetropolisWalker
    {
    public:
@@ -39,22 +43,22 @@ namespace VQMC
 
 inline double VQMCMetropolisWalker::getEAve() const
 {
-return m_EAve;
+   return m_EAve;
 }
 
 inline double VQMCMetropolisWalker::getEDev() const
 {
-return m_EDev;
+   return m_EDev;
 }
 
 inline double VQMCMetropolisWalker::getEAveSqd() const
 {
-return m_EAveSqd;
+   return m_EAveSqd;
 }
 
 inline unsigned VQMCMetropolisWalker::getNConfig() const
 {
-return m_nConfig;
+   return m_nConfig;
 }
 
 };

@@ -11,18 +11,18 @@ Class which represents interaction term as stated in 1953 Jastrow paper.
 
 namespace VQMC
 {
-class EffectiveRangeF : public InteractionF
-{
-public:
-explicit EffectiveRangeF(double as);
-~EffectiveRangeF();
+   class EffectiveRangeF : public InteractionF
+   {
+   public:
+      explicit EffectiveRangeF(double as);
+      ~EffectiveRangeF();
 
-void setScatteringLength(double as);
-double operator()(double rij)const;
+      void setScatteringLength(double as);
+      double operator()(double rij)const;
 
-private:
-double m_as; // S-Wave scattering length
-};
+   private:
+      double m_as; // S-Wave scattering length
+   };
 };
 
 #endif

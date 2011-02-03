@@ -152,10 +152,6 @@ namespace VQMC
        *This data member determines whether energy is to be computed
        */
       bool m_EnergyComputed;
-
-   private:
-      //VQMCconfig(const VQMCconfig& rhsConfig);
-      //VQMCconfig& operator=(const VQMCconfig& rhsConfig);
    };
 }; //end namespace VQMC
 

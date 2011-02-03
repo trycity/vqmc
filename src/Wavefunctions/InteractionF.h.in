@@ -10,17 +10,17 @@
 
 namespace VQMC
 {
-class InteractionF
-{
-public:
-   virtual ~InteractionF() {}
-
-   virtual double operator()(double rij)const
+   class InteractionF
    {
-     return 1.0;
-   }
+   public:
+      virtual ~InteractionF() {}
 
-};
+      virtual double operator()(double rij)const
+      {
+         return 1.0;
+      }
+
+   };
 };
 
 #endif

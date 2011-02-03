@@ -16,21 +16,20 @@ Class depicting symmetric harmonic oscillator Phi (SymHoPhi)
 
 namespace VQMC
 {
-	
-	class SymHoPhi : public Phi
-	{
-	public:
-		explicit SymHoPhi(double alpha);
-		~SymHoPhi();
+   class SymHoPhi : public Phi
+   {
+   public:
+      explicit SymHoPhi(double alpha);
+      ~SymHoPhi();
 
-		double getAlpha()const;
-		void setAlpha(double alpha);
+      double getAlpha()const;
+      void setAlpha(double alpha);
 		
-		double operator()(const VMCPoint& x)const;
+      double operator()(const VMCPoint& x)const;
 		
-	private:
-		// variational parameter
-		double m_Alpha;	
-	};
+   private:
+      // variational parameter
+      double m_Alpha;	
+   };
 };
 #endif

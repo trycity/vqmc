@@ -1,3 +1,9 @@
+/**
+ *@file SymHoLocalESqd.h
+ *
+ *@author ikhan
+ */
+
 #ifndef _SYMHOLOCALESQD_H
 #define _SYMHOLOCALESQD_H
 
@@ -9,17 +15,43 @@
 
 namespace VQMC
 {
-class SymHoLocalESqd : public localESqd
-{
-public:
-	SymHoLocalESqd(double alpha, double a);
-        ~SymHoLocalESqd();
+   /**
+   *@brief SymHoLocalESqd is used to compute the square of the energy of a system of interacting particles.  
+   * This class is suitable for particles trapped in a symmetric harmonic oscillator with Jastrow inter-particle interaction
+   */
+   class SymHoLocalESqd : public localESqd
+   {
+   public:
 
-	double operator()(const std::vector<VMCPoint>& vPoints)const;
+      /**
+       *Creates a SymHoLocalESqd object
+       *
+       *@param The variational parameter in the harmonic oscillator wavefunction
+       *@param The 2-body scattering length found in the 2-body term of the wavefunction
+       */
+      SymHoLocalESqd(double alpha, double a);
 
-private:
-	double m_dalpha;
-	double m_da;
+      /**
+       * Destroys a SymHoLocalESqd object
+       */
+      ~SymHoLocalESqd();
+
+      /**
+       *overloaded oprator() used to compute energy of a system
+       *
+       *@param A vector of VMCPoints, which represent a particular atomic configuration
+       *
+       *@return The energy of a system
+       */
+      double operator()(const std::vector<VMCPoint>& vPoints)const;
+
+   private:
+
+     /// This data member is the variational parameter of the system
+      double m_dalpha;
+
+      /// This data member is the 2-body scattering length
+      double m_da;
 };
 };
 
