@@ -1,3 +1,9 @@
+/**
+ *@file SymHoLocalE.h
+ *
+ *@author ikhan
+ */
+
 #ifndef _SYMHOLOCALE_H
 #define _SYMHOLOCALE_H
 
@@ -9,18 +15,44 @@
 
 namespace VQMC
 {
-class SymHoLocalE : public localE
-{
-public:
-	SymHoLocalE(double alpha, double a);
-        ~SymHoLocalE();
+   /**
+   *@brief SymHoLocalE is used to compute the energy of a system of interacting particles.  
+   * This class is suitable for particles trapped in a symmetric harmonic oscillator with Jastrow inter-particle interaction
+   */
+   class SymHoLocalE : public localE
+   {
+   public:
 
-	double operator()(const std::vector<VMCPoint>& vPoints)const;
+      /**
+       *Creates a SymHoLocalE object
+       *
+       *@param The variational parameter in the harmonic oscillator wavefunction
+       *@param The 2-body scattering length found in the 2-body term of the wavefunction
+       */
+      SymHoLocalE(double alpha, double a);
 
-private:
-	double m_dalpha;
-	double m_da;
-};
+      /**
+       * Destroys a SymHoLocalE object
+       */
+      ~SymHoLocalE();
+
+      /**
+       *overloaded oprator() used to compute energy of a system
+       *
+       *@param A vector of VMCPoints, which represent a particular atomic configuration
+       *
+       *@return The energy of a system
+       */
+      double operator()(const std::vector<VMCPoint>& vPoints)const;
+
+   private:
+
+      /// This data member is the variational parameter of the system
+      double m_dalpha;
+
+      /// This data member is the 2-body scattering length
+      double m_da;
+   };
 };
 
 #endif

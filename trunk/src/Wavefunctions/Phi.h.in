@@ -16,7 +16,7 @@ class used as a wrapper to create the 1-body external potential wavefunction ter
 namespace VQMC
 {
    /**
-   *@brief class used as a wrapper to create the 1-body external potential wavefunction term
+   *@brief class used to create the 1-body wavefunction term if there is not external potential
    */
    class Phi
    {
