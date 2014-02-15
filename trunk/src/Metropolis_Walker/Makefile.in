@@ -18,9 +18,6 @@ LIBS += -lVQMCConfigurations
 LIBS += -lVQMCEnergy_Terms
 LIBS += -lVQMCWavefunctions
 
-# LD flags
-SHLIBFLAGS = -shared
-SHLIBFLAGS += -m32
 
 %: %.o
 	$(CXX) $(CXXFLAGS) -o $@ $< $(LIBS)

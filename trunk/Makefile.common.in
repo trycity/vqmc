@@ -18,18 +18,21 @@ LIBCXXFLAGS = -fPIC
 CXXFLAGS = -MD
 CXXFLAGS += -Wall
 CXXFLAGS += -Werror
-CXXFLAGS += -m32
+CXXFLAGS += -m64
 ifeq ("$(IS_DEBUG_BUILD)", "y")
 CXXFLAGS += -g
 else
 CXXFLAGS += -DNDEBUG
+CXXFLAGS += -fopenmp
+CXXFLAGS += -fPIC
 CXXFLAGS += -O2
 endif
 CXXFLAGS += $(INCDIRS)
 
 # LD flags
 SHLIBFLAGS = -shared
-SHLIBFLAGS += -m32
+SHLIBFLAGS += -m64
+
 
 # directories for libraries
 LIBRARY_DIRECTORIES = $(VQMC_BUILD_DIR)/src/Utilities

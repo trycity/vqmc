@@ -6,6 +6,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include "omp.h"
 
 #include "@BUILD_DIR@/src/Wavefunctions/SymHoPhi.h"
 #include "@BUILD_DIR@/src/Wavefunctions/EffectiveRangeF.h"
@@ -74,19 +75,20 @@ int main()
 	double Eave2Sum = Eave*Eave;
 	double EdevSum = Edev;
 	double Edev2Sum = Edev*Edev;
-	for(unsigned i=1;i<nRuns;i++) 
-        {
-		walker.Run(0,nConfigs);
-		Eave = walker.getEAve();
-		Edev = walker.getEDev();
-//		cout << "For Run #" << i << endl;
-//		cout << "Eave = " << Eave << endl;
-//		cout << "Edev = " << Edev << endl;
-		EaveSum += Eave;
-		Eave2Sum += Eave*Eave;
-		EdevSum += Edev;
-		Edev2Sum += Edev*Edev;
-	}
+
+//   #pragma omp parallel for
+  // {
+	   for(unsigned i=1;i<nRuns;i++) 
+      {
+		   walker.Run(0,nConfigs);
+		   Eave = walker.getEAve();
+		   Edev = walker.getEDev();
+		   EaveSum += Eave;
+		   Eave2Sum += Eave*Eave;
+		   EdevSum += Edev;
+		   Edev2Sum += Edev*Edev;
+	   }
+//   }
 		double AveEave = EaveSum/nRuns;
 		double VarEave = sqrt(Eave2Sum/nRuns-AveEave*AveEave);
 		double AveEdev = EdevSum/nRuns;
