@@ -8,10 +8,6 @@ include ../../Makefile.common
 SOURCES = $(shell ls $(VQMC_BUILD_DIR)/src/$(LIBNAME)/*.cpp | sed "s|$(VQMC_BUILD_DIR)/src/$(LIBNAME)/||g")
 OBJECTS = $(SOURCES:.cpp=.o)
 
-# LD flags
-SHLIBFLAGS = -shared
-SHLIBFLAGS += -m32 
-
 .PHONY: all clean lib
 
 all: $(OBJECTS) lib

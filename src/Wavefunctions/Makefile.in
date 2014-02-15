@@ -12,10 +12,6 @@ OBJECTS = $(SOURCES:.cpp=.o)
 
 LIBS = -lVQMCUtilities
 
-# LD flags
-SHLIBFLAGS = -shared
-SHLIBFLAGS += -m32 
-
 %: %.o
 	$(CXX) $(CXXFLAGS) -o $@ $< #$(LIBS)
 
