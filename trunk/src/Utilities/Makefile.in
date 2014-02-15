@@ -2,6 +2,8 @@ LIBNAME = Utilities
 
 VQMC_BUILD_DIR = @BUILD_DIR@
 
+include ../../Makefile.common
+
 
 SOURCES = $(shell ls $(VQMC_BUILD_DIR)/src/$(LIBNAME)/*.cpp | sed "s|$(VQMC_BUILD_DIR)/src/$(LIBNAME)/||g")
 OBJECTS = $(SOURCES:.cpp=.o)
